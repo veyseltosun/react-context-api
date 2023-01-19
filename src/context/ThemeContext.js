@@ -15,13 +15,18 @@ class ThemeContextProvider extends React.Component {
             text:"#fff",
             background: "#5c5c5c" ,
 
-        }
+        },
 
+
+    };
+
+    changeTheme = () => {
+        this.setState({isDarkTheme: !this.state.isDarkTheme});
     }
 
     render() {
         return (
-            <ThemeContext.Provider value={{...this.state}}>
+            <ThemeContext.Provider value={{...this.state, changeTheme:this.changeTheme}}>
                 {this.props.children}
 
             </ThemeContext.Provider>
