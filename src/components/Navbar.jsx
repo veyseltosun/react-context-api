@@ -2,6 +2,7 @@ import React from "react";
 
 class Navbar extends React.Component {
     render() {
+    return(
 
         <nav>
             <h2 className="ui centered header">
@@ -13,6 +14,9 @@ class Navbar extends React.Component {
                 <button className="ui button">Support</button>
             </div>
         </nav>
+    )
 
     }
 }
+
+export default Navbar ;
