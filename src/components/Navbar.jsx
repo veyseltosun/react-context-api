@@ -12,7 +12,7 @@ class Navbar extends React.Component {
 
         <nav style={{background: theme.background , color: theme.text, height:"120px"}}>
             <h2 style={{textAlign:"center"}}>
-                pine academy
+                veyoAcademy
             </h2>
             <div className="ui three buttons">
                 <button className="ui button">Overview</button>
