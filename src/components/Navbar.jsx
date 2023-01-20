@@ -1,19 +1,22 @@
-import React from "react";
+import React, {useContext} from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { AuthContext } from "../context/AuthContext";
 
-class Navbar extends React.Component {
-    static contextType = ThemeContext;
 
-    render() {
-        console.log(this.context);
-        const {isDarkTheme, darkTheme, lightTheme } = this.context;
-        const theme = isDarkTheme ? darkTheme : lightTheme;
+const Navbar = () => {
+    const {isDarkTheme, darkTheme, lightTheme } = useContext(ThemeContext);
+    const {isLoggedIn, changeAuthStatus } = useContext(AuthContext);
+    const theme = isDarkTheme ? darkTheme : lightTheme;
     return(
-
         <nav style={{background: theme.background , color: theme.text, height:"120px"}}>
             <h2 style={{textAlign:"center"}}>
                 veyoAcademy
             </h2>
+            <p
+             style={{textAlign:"center" }} onClick = {changeAuthStatus}
+            >
+                {isLoggedIn ? "Logged in" : "Logged out"}
+            </p>
             <div className="ui three buttons">
                 <button className="ui button">Overview</button>
                 <button className="ui button">Contact</button>
@@ -22,7 +25,6 @@ class Navbar extends React.Component {
         </nav>
     )
 
-    }
 }
 
 export default Navbar ;
