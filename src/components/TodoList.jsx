@@ -4,12 +4,12 @@ import { ThemeContext } from "../context/ThemeContext";
 import { TodoListContext } from "../context/TodoListContext";
 
 const TodoList = () => {
-              const [newTodo, setNewTodo] = useState("");
+    const [newTodo, setNewTodo] = useState("");
 
     const { isDarkTheme, lightTheme, darkTheme, changeTheme } = useContext(ThemeContext);
     const theme = isDarkTheme ? darkTheme : lightTheme;
 
-    const { todos, addTodo, removeTodo } = useContext(TodoListContext);
+    const { todos, dispatch } = useContext(TodoListContext);
     // console.log(todos);
     // console.log(todos.length)
     const handleChange = (e) => {
@@ -20,12 +20,13 @@ const TodoList = () => {
 
     const onFormSubmit = (e) => {
         e.preventDefault();
-        addTodo(newTodo);
-        setNewTodo("");
+        dispatch({type: "ADD_TODO", text: newTodo});
+        setNewTodo("")
+    
     }
     const handleRemoveTodo = (e) => {
        const id = e.target.id;
-       removeTodo(id);
+       dispatch({type:"REMOVE_TODO", id});
     }
 
     return (
